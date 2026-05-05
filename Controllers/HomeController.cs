@@ -63,11 +63,12 @@ namespace MoveisCarrara.Controllers
 
             return RedirectToAction("Dashboard");
         }
-
+        
         // ===========================================================
         // GET /Home/Dashboard — página principal após login
         // ===========================================================
         public async Task<IActionResult> Dashboard()
+        
         {
             // Verifica se está logado — se não, manda para o login
             if (HttpContext.Session.GetString("UsuarioLogado") == null)
@@ -103,8 +104,9 @@ namespace MoveisCarrara.Controllers
             ViewBag.Usuario      = HttpContext.Session.GetString("UsuarioLogado");
 
             return View();
+        
         }
-
+  
         // ===========================================================
         // GET /Home/Logout — encerra a sessão e volta ao login
         // ===========================================================
