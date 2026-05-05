@@ -39,7 +39,7 @@ namespace MoveisCarrara.Controllers
         // ===========================================================
         public async Task<IActionResult> Index()
         {
-            if (!VerificarLogin()) return RedirectToAction("Login", "Home");
+            //if (!VerificarLogin()) return RedirectToAction("Login", "Home");
 
             // JOIN entre Clientes e Pessoas via Include
             // Equivale a: SELECT * FROM Clientes c JOIN Pessoas p ON c.pessoa_id = p.id
@@ -55,8 +55,8 @@ namespace MoveisCarrara.Controllers
         // ===========================================================
         public IActionResult Create()
         {
-            if (!VerificarLogin()) return RedirectToAction("Login", "Home");
-            return View();
+           // if (!VerificarLogin()) return RedirectToAction("Login", "Home");
+            return View(new Pessoa());;
         }
 
         // ===========================================================
@@ -68,7 +68,7 @@ namespace MoveisCarrara.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Pessoa pessoa)
         {
-            if (!VerificarLogin()) return RedirectToAction("Login", "Home");
+            //if (!VerificarLogin()) return RedirectToAction("Login", "Home");
 
             // ModelState.IsValid verifica as validações dos atributos do Model
             // Ex: [Required], [StringLength], [EmailAddress]
@@ -98,7 +98,7 @@ namespace MoveisCarrara.Controllers
         // ===========================================================
         public async Task<IActionResult> Edit(int id)
         {
-            if (!VerificarLogin()) return RedirectToAction("Login", "Home");
+            //if (!VerificarLogin()) return RedirectToAction("Login", "Home");
 
             // Busca o cliente pelo id no banco
             var cliente = await _context.Clientes
@@ -119,7 +119,7 @@ namespace MoveisCarrara.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Pessoa pessoa)
         {
-            if (!VerificarLogin()) return RedirectToAction("Login", "Home");
+            //if (!VerificarLogin()) return RedirectToAction("Login", "Home");
 
             if (ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace MoveisCarrara.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-            if (!VerificarLogin()) return RedirectToAction("Login", "Home");
+           // if (!VerificarLogin()) return RedirectToAction("Login", "Home");
 
             // Busca o registro na tabela Clientes
             var cliente = await _context.Clientes.FindAsync(id);

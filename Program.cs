@@ -26,7 +26,6 @@ builder.Services
 // Habilita o padrão MVC (Controllers + Views)
 // -----------------------------------------------------------
 builder.Services.AddControllersWithViews();
-
 // -----------------------------------------------------------
 // Habilita sessão para guardar o usuário logado
 // -----------------------------------------------------------
@@ -37,7 +36,14 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
 });
 
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
 
 // -----------------------------------------------------------
 // Serve arquivos estáticos (CSS, JS, imagens da pasta wwwroot)
@@ -47,6 +53,7 @@ app.UseStaticFiles();
 // -----------------------------------------------------------
 // Ativa o middleware de sessão
 // -----------------------------------------------------------
+app.UseRouting();
 app.UseSession();
 
 // -----------------------------------------------------------
